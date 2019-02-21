@@ -513,7 +513,7 @@ app.ticker.add(() => {
             if (Controls.up) {
                 angle += Math.PI;
             } // optional
-            aimTarget = new Vector2(d * Math.cos(angle), d * Math.sin(angle));
+            aimTarget = Vector2.Polar(angle,d);
             keyboardSteering = true;
         } else {
             angle = Controls.angle;
