@@ -1,23 +1,12 @@
 ﻿import { Settings } from "./settings";
+import { customElement, ITemplateDefinition } from "@aurelia/runtime";
+import template from "./hud.html";
 
-const hudh = document.getElementById("hud");
+@customElement(<ITemplateDefinition>{ name: "hud", template })
 export class HUD {
-    _latency: number;
+    latency: number;
     framesPerSecond: number;
     playerCount: number;
     spectatorCount: number;
-    set latency(l) {
-        this._latency = l;
-        this.update();
-    }
-    update() {
-        if (Settings.hudEnabled) hudh.style.visibility = "visible";
-        else hudh.style.visibility = "hidden";
-
-        hudh.innerHTML = `fps: ${this.framesPerSecond || 0} - \
-                          players: ${this.playerCount || 0} - \
-                          spectators: ${this.spectatorCount || 0} - \
-                          ping: ${Math.floor(this._latency || 0)}`;
-        hudh.style.fontFamily = Settings.font;
-    }
+    Settings = Settings;
 }

@@ -1,4 +1,7 @@
 ﻿import "babel-polyfill";
+import { DebugConfiguration } from "@aurelia/debug";
+import { BasicConfiguration } from "@aurelia/jit-html-browser";
+import { Aurelia } from "@aurelia/runtime";
 
 import { Renderer } from "./renderer";
 import { Background } from "./background";
@@ -36,19 +39,20 @@ const canvas = document.getElementById("gameCanvas") as HTMLCanvasElement;
 //PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.LINEAR;
 //PIXI.settings.RESOLUTION = window.devicePixelRatio || 1;
-const app = new PIXI.Application(<PIXI.ApplicationOptions>{ view: canvas, transparent: true });
-app.stage = new PIXI.display.Stage();
-(<PIXI.display.Stage>app.stage).group.enableSort = true;
+const app = new PIXI.Application({ view: canvas, transparent: true });
+const stage = new PIXI.display.Stage();
+app.stage = stage;
+stage.group.enableSort = true;
 const container = new CustomContainer();
-app.stage.addChild(container);
+stage.addChild(container);
 
 var backgroundGroup = new PIXI.display.Group(0, true);
 var tileGroup = new PIXI.display.Group(1, true);
 var bodyGroup = new PIXI.display.Group(2, true);
 
-app.stage.addChild(new PIXI.display.Layer(backgroundGroup));
-app.stage.addChild(new PIXI.display.Layer(tileGroup));
-app.stage.addChild(new PIXI.display.Layer(bodyGroup));
+stage.addChild(new PIXI.display.Layer(backgroundGroup));
+stage.addChild(new PIXI.display.Layer(tileGroup));
+stage.addChild(new PIXI.display.Layer(bodyGroup));
 
 container.backgroundGroup = backgroundGroup;
 container.bodyGroup = bodyGroup;
@@ -65,11 +69,17 @@ container.plotly = document.getElementById("plotly");
 const camera = new Camera(size);
 const interpolator = new Interpolator();
 const leaderboard = new Leaderboard();
-const minimap = new Minimap(app.stage, size);
+const minimap = new Minimap(stage, size);
 const hud = new HUD();
 const log = new Log();
 const cooldown = new Cooldown();
 let isSpectating = false;
+
+
+window["au"] = new Aurelia()
+    .register(BasicConfiguration, DebugConfiguration)
+    .app({ host: document.querySelector("hud"), component: hud })
+    .start();
 
 let angle = 0.0;
 let aimTarget = new Vector2(0, 0);

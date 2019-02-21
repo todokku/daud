@@ -60,6 +60,7 @@
             foreach (var sensor in Sensors)
                 sensor.Sense();
 
+
             if (SensorCTF.CTFModeEnabled)
             {
                 if (SensorCTF.IsCarryingFlag)

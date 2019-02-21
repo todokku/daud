@@ -1,4 +1,3 @@
-import { fetch } from "whatwg-fetch";
 import Cookies from "js-cookie";
 import JSZip from "jszip";
 import { textureMap } from "./models/textureMap";

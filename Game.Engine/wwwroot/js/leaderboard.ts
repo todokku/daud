@@ -20,7 +20,7 @@ export function escapeHtml(str) {
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
 }
-function getOut(entry, position: Vector2, rank, entryIsSelf) {
+function getOut(entry, position: Vector2, rank?: any, entryIsSelf?: boolean) {
     const angle = Math.atan2(entry.Position.y - position.y, entry.Position.x - position.x);
 
     if (rank === undefined) {

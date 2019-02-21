@@ -1,7 +1,4 @@
-﻿import "babel-polyfill";
-
-import { fetch } from "whatwg-fetch";
-import * as dat from "dat.gui";
+﻿import * as dat from "dat.gui";
 
 export const gui = new dat.GUI({ width: 500 });
 

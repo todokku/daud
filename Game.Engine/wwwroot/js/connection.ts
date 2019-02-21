@@ -294,7 +294,7 @@ export class Connection {
             case this.fb.AllMessages.NetEvent:
                 message = quantum.message(new this.fb.NetEvent());
 
-                var event = {
+                var event: any = {
                     type: message.type(),
                     data: JSON.parse(message.data())
                 };

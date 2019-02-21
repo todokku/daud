@@ -12,15 +12,16 @@
   "author": "modderme123",
   "license": "ISC",
   "dependencies": {
-    "@aurelia/debug": "dev",
-    "@aurelia/jit": "dev",
-    "@aurelia/jit-html": "dev",
-    "@aurelia/jit-html-browser": "dev",
-    "@aurelia/kernel": "dev",
-    "@aurelia/runtime": "dev",
-    "@aurelia/runtime-html": "dev",
-    "@aurelia/runtime-html-browser": "dev",
+    "@aurelia/debug": "*",
+    "@aurelia/jit": "^0.3.0",
+    "@aurelia/jit-html": "^0.3.0-dev.20181229",
+    "@aurelia/jit-html-browser": "^0.3.0-dev.20190112",
+    "@aurelia/kernel": "^0.3.0",
+    "@aurelia/runtime": "*",
+    "@aurelia/runtime-html": "^0.3.0-dev.20181229",
+    "@aurelia/runtime-html-browser": "^0.3.0-dev.20190112",
     "@types/flatbuffers": "^1.9.1",
+    "autoprefixer": "^9.4.8",
     "babel-polyfill": "^6.26.0",
     "dat.gui": "^0.7.5",
     "emoji-mart": "^2.9.2",
@@ -35,11 +36,10 @@
     "plotly.js": "^1.44.4",
     "prettier": "^1.16.4",
     "react": "^16.8.2",
-    "react-dom": "^16.8.2",
-    "whatwg-fetch": "^3.0.0"
+    "react-dom": "^16.8.2"
   },
   "devDependencies": {
-    "autoprefixer": "^9.4.8",
+    "@types/node": "latest",
     "cssnano": "^4.1.10",
     "parcel-bundler": "^1.11.0",
     "typescript": "^3.3.3"
